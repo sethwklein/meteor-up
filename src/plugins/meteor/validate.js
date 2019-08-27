@@ -59,6 +59,14 @@ const schema = joi.object().keys({
     driver: joi.string(),
     opts: joi.object()
   }),
+  logProxy: joi.object().keys({
+    driver: joi.string(),
+    opts: joi.object()
+  }),
+  logLetsEncrypt: joi.object().keys({
+    driver: joi.string(),
+    opts: joi.object()
+  }),
   volumes: joi.object(),
   nginx: joi.object().keys({
     clientUploadLimit: joi.string().trim()

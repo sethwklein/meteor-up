@@ -107,6 +107,8 @@ EOT
     sudo docker run -d -p 80:80 -p 443:443 \
       --name $APPNAME-nginx-proxy \
       --restart=always \
+      <% if(logConfigProxy && logConfigProxy.driver)  { %>--log-driver=<%= logConfigProxy.driver %> <% } %> \
+      <% for(var option in logConfigProxy.opts) { %>--log-opt <%= option %>=<%= logConfigProxy.opts[option] %> <% } %> \
       -e "DEFAULT_HOST=<%= sslConfig.autogenerate.domains.split(',')[0] %>" \
       -v /opt/$APPNAME/config/nginx-default.conf:/etc/nginx/conf.d/my_proxy.conf:ro \
       -v /opt/$APPNAME/certs:/etc/nginx/certs:ro \
@@ -133,6 +135,8 @@ EOT
     sudo docker run \
       -d \
       --restart=always \
+      <% if(logConfigLetsEncrypt && logConfigLetsEncrypt.driver)  { %>--log-driver=<%= logConfigLetsEncrypt.driver %> <% } %> \
+      <% for(var option in logConfigLetsEncrypt.opts) { %>--log-opt <%= option %>=<%= logConfigLetsEncrypt.opts[option] %> <% } %> \
       --volume=/opt/$APPNAME/config/bundle.crt:/bundle.crt \
       --volume=/opt/$APPNAME/config/private.key:/private.key \
       --link=$APPNAME:backend \

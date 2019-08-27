@@ -216,6 +216,18 @@ module.exports = {
         'syslog-address': 'udp://syslogserverurl.com:1234'
       }
     },
+    logProxy: {
+      driver: 'syslog',
+      opts: {
+        'syslog-address': 'udp://syslogserverurl.com:1234'
+      }
+    },
+    logLetsEncrypt: {
+      driver: 'syslog',
+      opts: {
+        'syslog-address': 'udp://syslogserverurl.com:1234'
+      }
+    },
     // The maximum number of seconds it will wait
     // for your app to successfully start (optional, default is 60)
     deployCheckWaitTime: 60,

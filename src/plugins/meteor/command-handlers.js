@@ -245,6 +245,8 @@ export function envconfig(api) {
       bind: bindAddress,
       sslConfig: config.ssl,
       logConfig: config.log,
+      logConfigProxy: config.logProxy,
+      logConfigLetsEncrypt: config.logLetsEncrypt,
       volumes: config.volumes,
       docker: config.docker,
       proxyConfig: api.getConfig().proxy,
